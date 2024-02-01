@@ -1,0 +1,11 @@
+FROM python:3.8-slim
+
+WORKDIR /app1
+
+COPY app1.py .
+COPY templates templates
+
+RUN pip install flask requests
+
+CMD ["python", "app1.py"]
+

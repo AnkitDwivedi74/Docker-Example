@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App1</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    
+    <!-- Form to send message to App2 -->
+    <form method="post" action="/send_message">
+        <label for="message">Send Message to App2:</label>
+        <input type="text" id="message" name="message" required>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
+

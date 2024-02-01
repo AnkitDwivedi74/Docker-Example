@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: Dockerfile.app1
+    ports:
+      - "5001:5001"
+    networks:
+      my_network:
+        ipv4_address: 192.18.0.2
+
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile.app2
+    ports:
+      - "5002:5002"
+    networks:
+      my_network:
+        ipv4_address: 192.18.0.3
+
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.18.0.0/16
+
