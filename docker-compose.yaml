@@ -6,27 +6,32 @@ services:
       context: ./app1
     container_name: my-app1
     networks:
-      app_network:
-        ipv4_address: 172.168.0.2  # Specify the static IP address for app1
+      my_network:
+        aliases:
+          - app1alias
     ports:
       - "3001:80"
+    environment:
+      - APP2_CONTAINER_NAME=app2alias
 
   app2:
     build:
       context: ./app2
     container_name: my-app2
     networks:
-      app_network:
-        ipv4_address: 172.168.0.3  # Specify the static IP address for app2
+      my_network:
+        aliases:
+          - app2alias
     ports:
       - "3002:80"
+    environment:
+      - APP1_CONTAINER_NAME=app1alias
 
 networks:
-  app_network:
+  my_network:
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 172.168.0.0/16
-
 
